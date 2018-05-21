@@ -1,3 +1,4 @@
+@(name : String)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,8 +8,8 @@
 </head>
 <body>
 <h1>Shame</h1>
-<p>You are back at home port with nothing to show for it.
-    Better get going before someone notices.
+<p>Wow, @name. You are back at home port with nothing to show for it.
+    I'm quite impressed. Better get going before someone notices.
 </p>
 <form action="@routes.GameController.postWestFromEngland" method="POST">
     @CSRF.formField

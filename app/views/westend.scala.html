@@ -1,4 +1,6 @@
+@(name : String)
 <!DOCTYPE html>
+@import helper._
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -11,5 +13,10 @@
     You spin happily ever after.
     The end.
 </p>
+<br>
+<form action="@routes.GameController.getWelcome" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play Again"/>
+</form>
 </body>
 </html>

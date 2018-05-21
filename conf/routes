@@ -3,6 +3,7 @@
 # ~~~~
 
 GET     /                           controllers.GameController.getWelcome
+POST    /                           controllers.GameController.getWelcome
 GET     /showKittens                controllers.GameController.getKittens
 POST    /start                      controllers.GameController.postStart
 POST    /tryWestFromEngland         controllers.GameController.postWestFromEngland

@@ -1,4 +1,6 @@
+@(name : String)
 <!DOCTYPE html>
+@import helper._
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -12,7 +14,13 @@
     Lucky for you a passing catfish chases away the coelacanths.
     You are all able to swim to the shore of a frozen island where you find nothing to eat but lettuce.
     Years later you are rescued by a ship named Titanic on its way to the New World.
-    The end.
+    And thus, @name, your story ends. Maybe you'd like to try again? I doubt it.
 </p>
+<br>
+<form action="@routes.GameController.getWelcome" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play Again"/>
+</form>
+
 </body>
 </html>
