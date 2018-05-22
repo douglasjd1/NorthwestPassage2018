@@ -18,6 +18,7 @@
 <form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
     <input type="text" name="name"/>
+    <br>
     <input type="submit" value="Let's Do This!"/>
 </form>
 <form action="@routes.GameController.getKittens" method="GET">

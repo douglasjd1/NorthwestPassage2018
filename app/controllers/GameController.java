@@ -34,6 +34,11 @@ public class GameController extends Controller
         return ok(views.html.start.render(session().get("name")));
     }
 
+    public Result getStart()
+    {
+        return ok(views.html.start.render(session().get("name")));
+    }
+
     public void lostCrewMember()
     {
         int crewMembers = Integer.parseInt(session().get("crewMembers")) - 1;

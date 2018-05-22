@@ -22,7 +22,7 @@
     @CSRF.formField
     <input type="submit" value="New Character"/>
 </form>
-<form action="@routes.GameController.postStart" method="POST">
+<form action="@routes.GameController.getStart" method="GET">
     @CSRF.formField
     <input type="submit" value="Play Again"/>
 </form>
