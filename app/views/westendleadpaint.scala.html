@@ -1,0 +1,33 @@
+@(name : String, crewMembersSize : Integer, crewMembers : List[String])
+<!DOCTYPE html>
+@import helper._
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Northwest Passage</title>
+</head>
+<body>
+<h1>Winning Like Someone who Wins a Lot</h1>
+<p>You, @name, reach China and load up on fidget spinners.
+    When you get back to England the Queen rewards you with a monopoly on importing them.
+    You spin happily ever after. The end.
+
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
+
+</p>
+<br>
+<img src="assets/images/westendleadpaint.jpeg" height="200">
+
+<form action="@routes.GameController.getWelcome" method="POST">
+    @CSRF.formField
+    <input type="submit" value="New Character"/>
+</form>
+<form action="@routes.GameController.getStart" method="GET">
+    @CSRF.formField
+    <input type="submit" value="Play Again"/>
+</form>
+</body>
+</html>
