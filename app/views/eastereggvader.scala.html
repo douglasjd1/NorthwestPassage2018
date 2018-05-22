@@ -1,0 +1,21 @@
+@(kitten : String)
+<!DOCTYPE html>
+@import helper._
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Northwest Passage</title>
+</head>
+<body>
+    <h1>The force is strong with this one</h1>
+    <p>
+        Instead of whatever kitten you picked, your new avatar is: <br>
+        <img src="assets/images/@kitten" height="150"><br>
+        May the force be with you.
+    </p>
+    <form action="@routes.GameController.getStart" method="GET">
+        @CSRF.formField
+        <input type="submit" value="Continue"/>
+    </form>
+</body>
+</html>

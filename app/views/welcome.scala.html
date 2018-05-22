@@ -17,7 +17,22 @@
 
 <form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
+    Enter your name:
     <input type="text" name="name"/>
+    <br>
+    Pick an avatar:
+    <br>
+    <input type="radio" name="kitten" value="kitten1"/>
+    <img src="assets/images/kitten1.jpg" height="200">
+    <br>
+    <input type="radio" name="kitten" value="kitten2"/>
+    <img src="assets/images/kitten2.jpg" height="200">
+    <br>
+    <input type="radio" name="kitten" value="kitten3"/>
+    <img src="assets/images/kitten3.jpg" height="200">
+    <br>
+    <input type="radio" name="kitten" value="kitten4"/>
+    <img src="assets/images/kitten4.jpg" height="200">
     <br>
     <input type="submit" value="Let's Do This!"/>
 </form>
