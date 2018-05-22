@@ -1,4 +1,4 @@
-@(name : String, crewMembers : Integer)
+@(name : String, crewMembersSize : Integer, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -7,11 +7,16 @@
     <title>Northwest Passage</title>
 </head>
 <body>
-<h1>Winning Like Someone who Wins a Lot</h1>
-<p>You, @name, reach China and load up on fidget spinners.
+<h1>A Special Encounter</h1>
+<p>
+    You sailed north, and there are tons of icebergs around here. It's looking pretty dangerous.
     Wait, what's that? Something is coming from the sky. Its very red. OMG! IT'S SANTA CLAUSE!
     Santa gives you 1029485710945 more fidget spinners, and you make enough money to retire forever.
-    You spin happily ever after. The end. Crew members left: @crewMembers
+    You spin happily ever after. The end.
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
 </p>
 <br>
 <img src="assets/images/meetingwithsanta.jpg" height="200">

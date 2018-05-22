@@ -1,4 +1,4 @@
-@(name : String)
+@(name : String, crewMembersSize : Integer, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -12,6 +12,11 @@
     You are given a small ship with a crew of 10 people.
     Most of your sailor friends believe that your best chance of success is to sail northwest above North America.
     However, some of your crew believe you should try going east over Russia or north over the top of the world instead.
+
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
 </p>
 <br>
 

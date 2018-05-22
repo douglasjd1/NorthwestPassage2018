@@ -1,4 +1,4 @@
-@(name : String, crewMembers : Integer)
+@(name : String, crewMembersSize : Integer, crewMember : String, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -11,8 +11,11 @@
 <p>This way is not looking very promising.
     You keep going in and out of bays trying to find a way east but you always run into land.
     You, @name, being quite the coward, are afraid you may run aground and be eaten by one of the roving bands of feral kittens you see frolicking upon the shore.
-    One crew member was injured.
-    Crew members left: @crewMembers
+    @crewMember was injured.
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
 
 </p>
 <br>

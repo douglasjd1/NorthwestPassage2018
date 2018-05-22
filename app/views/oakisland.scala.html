@@ -1,4 +1,4 @@
-@(name : String, crewMembers : Integer)
+@(name : String, crewMembersSize : Integer, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 
@@ -13,6 +13,11 @@
         Ahoy there, @name, welcome to Oak Island. You now have only @crewMembers crewmembers. No way yer makin' it back to England. Stay here, rest a bit.
         Oh, and watch out fer the man eating plants. And the man eating monkeys. They got me left eye 'round 6 years back, and me right leg the year
         after that. Enjoy yer stay, matee.
+
+        Healthy crew members left: @crewMembersSize
+        <br>
+        List of remaining crew members: <br>
+        @crewMembers
     <p/>
 <br>
 <img src="assets/images/oakisland.jpg" height="200">

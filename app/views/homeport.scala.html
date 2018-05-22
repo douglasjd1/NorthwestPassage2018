@@ -1,4 +1,4 @@
-@(name : String, crewMembers : Integer)
+@(name : String, crewMembersSize : Integer, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -10,7 +10,10 @@
 <h1>Shame</h1>
 <p>Wow, @name. You are back at home port with nothing to show for it.
     I'm quite impressed. Better get going before someone notices.
-    Crew members left: @crewMembers
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
 
 </p>
 <br>

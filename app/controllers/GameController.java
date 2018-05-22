@@ -9,12 +9,16 @@ import scala.Int;
 import views.html.helper.form;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import static java.lang.Integer.*;
 
 public class GameController extends Controller
 {
+    List<String> crewMembers = new ArrayList<>();
     private FormFactory formFactory;
-    private final String PLAYER_NAME_KEY = "name";
     @Inject
     public GameController(FormFactory formFactory)
     {
@@ -27,65 +31,89 @@ public class GameController extends Controller
 
     public Result postStart()
     {
+        crewMembers.clear();
+        initializeCrewMembers();
         DynamicForm form = formFactory.form().bindFromRequest();
         String name = form.get("name");
-        session().put(PLAYER_NAME_KEY, name);
-        session().put("crewMembers", "10");
-        return ok(views.html.start.render(session().get("name")));
+        session().put("name", name);
+
+        return ok(views.html.start.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
     public Result getStart()
     {
-        return ok(views.html.start.render(session().get("name")));
+        crewMembers.clear();
+        initializeCrewMembers();
+        return ok(views.html.start.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
-    public void lostCrewMember()
+    public String lostCrewMember()
     {
-        int crewMembers = Integer.parseInt(session().get("crewMembers")) - 1;
-        session().put("crewMembers", String.valueOf(crewMembers));
+        String crewMember = crewMembers.get(0);
+        crewMembers.remove(0);
+        return crewMember;
+    }
+
+    public void initializeCrewMembers()
+    {
+        crewMembers.add("Mickey Mouse");
+        crewMembers.add("King Kong");
+        crewMembers.add("Daffy Duck");
+        crewMembers.add("Jet Li");
+        crewMembers.add("Ezra Bridger");
+        crewMembers.add("Doctor Who");
+        crewMembers.add("Happy Feet");
+        crewMembers.add("Bob");
+        crewMembers.add("George Washington");
+        crewMembers.add("Karim Abdul-Jabar");
     }
 
     public Result postEastFromEngland()
     {
-        lostCrewMember();
-        if(Integer.parseInt(session().get("crewMembers")) < 5)
+        String injuredCrewMember = lostCrewMember();
+        if(crewMembers.size() < 5)
         {
-            return ok(views.html.oakisland.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+            return ok(views.html.oakisland.render(session().get("name"),crewMembers.size(), crewMembers));
         }
         else
         {
-            return ok(views.html.eastfromengland.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+            return ok(views.html.eastfromengland.render(session().get("name"), crewMembers.size(), injuredCrewMember, crewMembers));
         }
     }
 
     public Result postNorthFromEngland()
     {
-        return ok(views.html.northfromengland.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+        Random random = new Random();
+        int santaChance = random.nextInt(4) + 1;
+        if(santaChance == 1)
+            return ok(views.html.meetingwithsanta.render(session().get("name"),crewMembers.size(), crewMembers));
+        return ok(views.html.northfromengland.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
     public Result postWestFromEngland()
     {
-        lostCrewMember();
-        return ok(views.html.westfromengland.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+        String injuredCrewMember = lostCrewMember();
+        return ok(views.html.westfromengland.render(session().get("name"), crewMembers.size(), injuredCrewMember, crewMembers));
     }
 
     public Result postEastEnd()
     {
-        return ok(views.html.eastend.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+        return ok(views.html.eastend.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
     public Result postWestEnd()
     {
         Random random = new Random();
-        int chance = random.nextInt(4) + 1;
-        if(chance == 1)
-            return ok(views.html.meetingwithsanta.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
-        return ok(views.html.westend.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+        int leadChance = random.nextInt(5) + 1;
+
+        if(leadChance == 1)
+            return ok(views.html.westendleadpaint.render(session().get("name"),crewMembers.size(), crewMembers));
+        return ok(views.html.westend.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
     public Result postHomePort()
     {
-        return ok(views.html.homeport.render(session().get("name"), Integer.parseInt(session().get("crewMembers"))));
+        return ok(views.html.homeport.render(session().get("name"),crewMembers.size(), crewMembers));
     }
 
     public Result getKittens()

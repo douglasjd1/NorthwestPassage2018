@@ -1,4 +1,4 @@
-@(name : String, crewMembers : Integer)
+@(name : String, crewMembersSize : Integer, crewMember : String, crewMembers : List[String])
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -15,7 +15,12 @@
     He says something about being the doctor and hands you a large bottle of pills that says Flintstones on it.
     He tells you to take these to cure your scurvy.  He goes back into the little building and it disappears.
     The crew takes the pills and are healed the next day.
-    You feel better now and think you see a clear path through the iceburgs. Crew members left: @crewMembers
+    You feel better now and think you see a clear path through the iceburgs.
+
+    Healthy crew members left: @crewMembersSize
+    <br>
+    List of remaining crew members: <br>
+    @crewMembers
 
 </p>
 <br>
