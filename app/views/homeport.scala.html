@@ -1,4 +1,4 @@
-@(name : String)
+@(name : String, crewMembers : Integer)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -10,7 +10,12 @@
 <h1>Shame</h1>
 <p>Wow, @name. You are back at home port with nothing to show for it.
     I'm quite impressed. Better get going before someone notices.
+    Crew members left: @crewMembers
+
 </p>
+<br>
+
+<img src="assets/images/homeport.jpg" height="200">
 <form action="@routes.GameController.postWestFromEngland" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail West"/>

@@ -11,6 +11,10 @@
 <p>
     This game is meant to be played by only the most skilled gamers.  Play at your own risk!
 </p>
+<br>
+
+<img src="assets/images/welcome.png" height="200">
+
 <form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
     <input type="text" name="name"/>

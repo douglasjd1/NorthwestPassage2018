@@ -1,0 +1,28 @@
+@(name : String, crewMembers : Integer)
+<!DOCTYPE html>
+@import helper._
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oak Island</title>
+</head>
+<body>
+<h1>Took refuge on Oak Island</h1>
+    <p>
+        Ahoy there, @name, welcome to Oak Island. You now have only @crewMembers crewmembers. No way yer makin' it back to England. Stay here, rest a bit.
+        Oh, and watch out fer the man eating plants. And the man eating monkeys. They got me left eye 'round 6 years back, and me right leg the year
+        after that. Enjoy yer stay, matee.
+    <p/>
+<br>
+<img src="assets/images/oakisland.jpg" height="200">
+<form action="@routes.GameController.getWelcome" method="POST">
+    @CSRF.formField
+    <input type="submit" value="New Character"/>
+</form>
+<form action="@routes.GameController.postStart" method="POST">
+    @CSRF.formField
+    <input type="submit" value="Play Again"/>
+</form>
+</body>
+</html>

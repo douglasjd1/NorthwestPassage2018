@@ -1,4 +1,4 @@
-@(name : String)
+@(name : String, crewMembers : Integer)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -11,8 +11,12 @@
 <p>This way is not looking very promising.
     You keep going in and out of bays trying to find a way east but you always run into land.
     You, @name, being quite the coward, are afraid you may run aground and be eaten by one of the roving bands of feral kittens you see frolicking upon the shore.
+    One crew member was injured.
+    Crew members left: @crewMembers
+
 </p>
 <br>
+<img src="assets/images/eastfromengland.jpg" height="200">
 <form action="@routes.GameController.postHomePort" method="POST">
     @CSRF.formField
     <input type="submit" value="Sail back West"/>

@@ -1,4 +1,4 @@
-@(name : String)
+@(name : String, crewMembers : Integer)
 <!DOCTYPE html>
 @import helper._
 <html lang="en">
@@ -15,9 +15,14 @@
     You are all able to swim to the shore of a frozen island where you find nothing to eat but lettuce.
     Years later you are rescued by a ship named Titanic on its way to the New World.
     And thus, @name, your story ends. Maybe you'd like to try again? I doubt it.
+    Crew members left: @crewMembers
 </p>
-<br>
+<img src="assets/images/northfromengland.png" height="200">
 <form action="@routes.GameController.getWelcome" method="POST">
+    @CSRF.formField
+    <input type="submit" value="New Character"/>
+</form>
+<form action="@routes.GameController.postStart" method="POST">
     @CSRF.formField
     <input type="submit" value="Play Again"/>
 </form>
